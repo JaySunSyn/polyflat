@@ -15,9 +15,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     :host {
       display: block;
     }
+
   </style>
   <template>
     <div>Hello from <span>{{foo}}</span></div>
+
+
+
   </template>
 </dom-module>
 <script>
@@ -25,13 +29,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   Polymer({
     is: 'page-uielements',
 
+
     properties: {
       foo: {
         type: String,
-        value: 'bar',
+        value: 'ui',
         notify: true
       }
     }
   });
 })();
 </script>
+
+

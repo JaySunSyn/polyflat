@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Polymer Starter Kit" />
-  <title>Polymer Flat Dream</title>
+  <title>Polyflat Dream</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- Chrome for Android theme color -->
@@ -36,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
+  <meta name="apple-mobile-web-app-title" content="Flat Polymer Template">
   <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
 
   <!-- Tile icon for Win8 (144x144) -->
@@ -64,13 +64,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Toolbar -->
         <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title">Flat Dream</span>
+          <span class="paper-font-title">Polyflat Dream</span>
         </paper-toolbar>
 
         <!-- Drawer Content -->
+        <div style="top:75px; position:absolute; left:100px;">
+          <span style="color:white;height: 41px; vertical-align: middle;">18 GB / 25 GB</span>
+          <paper-icon-button icon="add" style="color:white;"></paper-icon-button>
+        </div>
         <div>
           <mat-avatar style="top:12px; padding:12px 0 12px 6px;" icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw"></mat-avatar>
-          <paper-progress value="40" secondary-progress="80" style="width:60%;"></paper-progress>
+          <paper-progress value="40" secondary-progress="80" style="width:70%;"></paper-progress>
         </div>
         
 
@@ -121,12 +125,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <span class="paper-menu-text">Charts</span>
               </a>
 
-              <a data-route="maps" href="/pages">
+              <a data-route="pages" href="/pages">
                 <iron-icon src="bower_components/material-design-icons/action/2x_web/ic_find_in_page_white_48dp.png"></iron-icon>
                 <span class="paper-menu-text">Pages</span>
               </a>
 
-              <a data-route="maps" href="/menulevels">
+              <a data-route="menulevels" href="/menulevels">
                 <iron-icon src="bower_components/material-design-icons/file/2x_web/ic_folder_open_white_48dp.png"></iron-icon>
                 <span class="paper-menu-text">Menu Levels</span>
               </a>
@@ -206,14 +210,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <page-tables></page-tables>
             </section>
 
+            <section data-route="maps">
+              <page-map></page-map>
+            </section>
+
+            <section data-route="email">
+              <page-email></page-email>
+            </section>
+
+            <section data-route="typography">
+              <page-typography></page-typography>
+            </section>
 
             <section data-route="charts">
               <page-chart></page-chart>
             </section>
 
-            <section data-route="maps">
-              <page-map></page-map>
+            <section data-route="pages">
+              <page-pages></page-pages>
             </section>
+
+            <section data-route="menulevels">
+              <page-menulevel></page-menulevel>
+            </section>
+
+            
 
           </iron-pages>
         </div>

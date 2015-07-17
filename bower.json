@@ -17,10 +17,14 @@
     "mat-avatar": "~0.9.4",
     "mat-icon-button": "~0.9.4",
     "google-chart": "GoogleWebComponents/google-chart#~1.0.2",
-    "google-map": "GoogleWebComponents/google-map#~1.0.3"
+    "google-map": "GoogleWebComponents/google-map#~1.0.3",
+    "charts-component": "https://github.com/vaadin/charts-component.git"
   },
   "devDependencies": {
     "web-component-tester": "*",
     "test-fixture": "PolymerElements/test-fixture#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^1.0.0"
   }
 }

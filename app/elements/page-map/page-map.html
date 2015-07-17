@@ -21,27 +21,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     google-map {
-      height: 400px;
-      width: 300px;
+      height: 360px;
+      width: 360px;
+      margin: 12px;
 
     }
 
     .mapBlock{
       float: left;
       display: inline;
-      padding: 24px;
-      background-color: white;
+      margin-bottom: 24px;
+      margin-right: 6px;
+      padding: 20px 20px;
+      background: #FFF;
+      border-radius: 3px;
+      position: relative;
+      -webkit-border-radius: 3px;
+      border-left: 1px solid #efefef;
+      border-right: 1px solid #efefef;
+      border-bottom: 1px solid #e2e2e2;
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04);
+      transition: padding 500ms;
+      -moz-transition: padding 500ms;
+      -webkit-transition: padding 500ms;
+    }
+
+    .blockTitle{
+      font-size:1.2em;
       margin: 12px;
     }
+
   </style>
   <template>
     <div class="mapBlock">
-      <h3>Basic Map</h3>
+      <span class="blockTitle">Basic Map</h3>
       <google-map latitude="37.77493" longitude="-122.41942"></google-map>
     </div>
     
     <div class="mapBlock">
-      <h3>Map with Marker</h3>
+      <span class="blockTitle">Map with Marker</h3>
       <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
         <google-map-marker latitude="37.779" longitude="-122.3892"
             draggable="true" title="Go Giants!"></google-map-marker>
@@ -50,12 +68,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
 
     <div class="mapBlock">
-      <h3>Terrain Map</h3>
+      <span class="blockTitle">Terrain Map</h3>
       <google-map latitude="37.77493" longitude="-122.41942" map-type="terrain"></google-map>
     </div>
 
     <div class="mapBlock">
-      <h3>Hybrid Map</h3>
+      <span class="blockTitle">Hybrid Map</h3>
       <google-map latitude="37.77493" longitude="-122.41942" map-type="hybrid"></google-map>
     </div>
 
