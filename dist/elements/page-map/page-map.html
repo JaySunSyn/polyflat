@@ -1,0 +1,92 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="../../bower_components/google-map/google-map-directions.html">
+
+<dom-module id="page-map">
+  <style>
+    :host {
+      display: block;
+      
+    }
+
+    google-map {
+      height: 360px;
+      width: 360px;
+      margin: 12px;
+
+    }
+
+    .mapBlock{
+      float: left;
+      display: inline;
+      margin-bottom: 24px;
+      margin-right: 6px;
+      padding: 20px 20px;
+      background: #FFF;
+      border-radius: 3px;
+      position: relative;
+      -webkit-border-radius: 3px;
+      border-left: 1px solid #efefef;
+      border-right: 1px solid #efefef;
+      border-bottom: 1px solid #e2e2e2;
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04);
+      transition: padding 500ms;
+      -moz-transition: padding 500ms;
+      -webkit-transition: padding 500ms;
+    }
+
+    .blockTitle{
+      font-size:1.2em;
+      margin: 12px;
+    }
+
+  </style>
+  <template>
+    <div class="mapBlock">
+      <span class="blockTitle">Basic Map</h3>
+      <google-map latitude="37.77493" longitude="-122.41942"></google-map>
+    </div>
+    
+    <div class="mapBlock">
+      <span class="blockTitle">Map with Marker</h3>
+      <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
+        <google-map-marker latitude="37.779" longitude="-122.3892"
+            draggable="true" title="Go Giants!"></google-map-marker>
+        <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
+      </google-map>
+    </div>
+
+    <div class="mapBlock">
+      <span class="blockTitle">Terrain Map</h3>
+      <google-map latitude="37.77493" longitude="-122.41942" map-type="terrain"></google-map>
+    </div>
+
+    <div class="mapBlock">
+      <span class="blockTitle">Hybrid Map</h3>
+      <google-map latitude="37.77493" longitude="-122.41942" map-type="hybrid"></google-map>
+    </div>
+
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'page-map',
+
+    properties: {
+      map:Object
+    }
+  });
+})();
+</script>
