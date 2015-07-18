@@ -1,0 +1,165 @@
+<!--
+@license
+Copyright (c) 2015 The ExpandJS authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This element is used to wrap Material Design demo panels.
+
+It should be used in conjunction with mat-demo-panel.
+
+@element mat-demo
+@description A custom element used to wrap Material Design demo panels
+@keywords material design, material demo, web app, html5, expandjs, web-components
+@group containers
+@homepage http://expandjs.com/elements/mat-demo
+
+@dependency polymer Polymer/polymer#^1.0.0
+@dependency expandjs ExpandJS/expandjs#0.9.4
+@dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
+@dependency mat-ink ExpandJS/mat-ink#0.9.4
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../mat-ink/mat-ink.html">
+<link rel="import" href="mat-demo-panel.html">
+
+<dom-module id="mat-demo">
+
+    <style>
+        :host {
+            display: block;
+            overflow: visible;
+        }
+
+        :host #matDemoHeader {
+            overflow: hidden;
+        }
+
+        :host #matDemoHeader,
+        :host #matDemoBody {
+            position: relative;
+        }
+
+        :host #matDemoName {
+            @apply(--layout-flex);
+            @apply(--mat-font-display2);
+            font-size: 44px !important /* override */;
+            overflow: hidden !important /* override */;
+            text-overflow: ellipsis !important; /* override */
+            white-space: nowrap !important; /* override */
+        }
+
+        :host #matDemoHome {
+            @apply(--mat-font-title);
+            float: right;
+        }
+
+        :host #matDemoType {
+            @apply(--mat-font-title);
+            float: left;
+            opacity: 0.30;
+            text-transform: capitalize;
+        }
+
+        :host ::content mat-demo-panel {
+            margin-top: 16px;
+        }
+
+        /* TABLET */
+
+        @media (min-width: 960px) {
+
+            :host ::content mat-demo-panel {
+                margin-top: 24px;
+            }
+        }
+    </style>
+
+    <template>
+        <div id="matDemoWrapper">
+            <mat-ink id="matDemoHeader">
+                <h1 id="matDemoName">{{name}}</h1>
+                <h2 id="matDemoType">{{type}}</h2>
+                <template is="dom-if" if="[[url]]" restamp><a id="matDemoHome" href$="[[url]]" on-click="_handleClick">Docs</a></template>
+            </mat-ink>
+            <div id="matDemoBody">
+                <content id="content"></content>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+
+            // ELEMENT
+            is: 'mat-demo',
+
+            /*********************************************************************/
+
+            /**
+             * Fired when the home link is clicked.
+             *
+             * @event mat-demo-redirect
+             * @param {Element} firer
+             * @param {string} href
+             * @bubbles
+             * @cancelable
+             */
+
+            /*********************************************************************/
+
+            // PROPERTIES
+            properties: {
+
+                /**
+                 * The subject's name.
+                 *
+                 * @attribute name
+                 * @type string
+                 */
+                name: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The subject's type.
+                 *
+                 * @attribute type
+                 * @type string
+                 */
+                type: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The subject's URL.
+                 *
+                 * @attribute url
+                 * @type string
+                 */
+                url: {
+                    type: String,
+                    value: null
+                }
+            },
+
+            /*********************************************************************/
+
+            // HANDLER
+            _handleClick: function (event) {
+                if (!event.button && this.fire('mat-demo-redirect', {firer: this, href: event.target.href}, {cancelable: true}).defaultPrevented) { event.preventDefault(); }
+            }
+        });
+    </script>
+
+</dom-module>

@@ -1,0 +1,84 @@
+<!--
+@license
+Copyright (c) 2015 The ExpandJS authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This element is used to display a material content.
+
+@element mat-content
+@description A custom element used to display a generic Material Design container
+@keywords material design, material content, web app, html5, expandjs, web-components
+@group containers
+@homepage http://expandjs.com/elements/mat-content
+
+@dependency polymer Polymer/polymer#^1.0.0
+@dependency expandjs ExpandJS/expandjs#0.9.4
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+
+<dom-module id="mat-content">
+
+    <style>
+        :host {
+            box-sizing: border-box;
+            display: block;
+            overflow: visible;
+            padding: 16px;
+        }
+
+        :host([inset]) {
+            padding-left: 72px;
+        }
+
+        /* TABLET */
+
+        @media (min-width: 960px) {
+
+            :host {
+                padding: 24px;
+            }
+
+            :host([inset]) {
+                padding-left: 80px;
+            }
+        }
+    </style>
+
+    <template>
+        <content id="content"></content>
+    </template>
+
+    <script>
+        Polymer({
+
+            // ELEMENT
+            is: 'mat-content',
+
+            /*********************************************************************/
+
+            // PROPERTIES
+            properties: {
+
+                /**
+                 * If set to true, the element is indented.
+                 *
+                 * @attribute inset
+                 * @type boolean
+                 * @default false
+                 */
+                inset: {
+                    reflectToAttribute: true,
+                    type: Boolean,
+                    value: false
+                }
+            }
+        });
+    </script>
+
+</dom-module>

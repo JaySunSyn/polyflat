@@ -1,0 +1,309 @@
+<!--
+@license
+Copyright (c) 2015 The ExpandJS authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This element is used to display a material panel.
+
+It can be used in conjunction with mat-panel-group.
+
+@element mat-panel
+@description A custom element used to display a Material Design panel
+@keywords material design, material panel, web app, html5, expandjs, web-components
+@group containers
+@homepage http://expandjs.com/elements/mat-panel
+
+@dependency polymer Polymer/polymer#^1.0.0
+@dependency expandjs ExpandJS/expandjs#0.9.4
+@dependency mat-menu-button ExpandJS/mat-menu-button#0.9.4
+@dependency mat-paper ExpandJS/mat-paper#0.9.4
+@dependency mat-toolbar ExpandJS/mat-toolbar#0.9.4
+@dependency xp-collapse ExpandJS/xp-collapse#0.9.4
+@dependency xp-slave-state ExpandJS/xp-slave-state#0.9.4
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../mat-menu-button/mat-menu-button.html">
+<link rel="import" href="../mat-paper/mat-paper.html">
+<link rel="import" href="../mat-toolbar/mat-toolbar.html">
+<link rel="import" href="../xp-collapse/xp-collapse.html">
+<link rel="import" href="../xp-slave-state/xp-slave-state.html">
+
+<dom-module id="mat-panel">
+
+    <style>
+        :host {
+            display: block;
+            overflow: visible;
+            text-align: left;
+        }
+
+        :host #matPanelWrapper {
+            @apply(--layout-vertical);
+        }
+
+        :host #matPanelHeader,
+        :host #matPanelBody,
+        :host #matPanelScroller {
+            position: relative;
+        }
+
+        :host #matPanelHeader {
+            -ms-flex-order: 1;
+            -webkit-order: 1;
+            order: 1;
+        }
+
+        :host #matPanelBody {
+            -ms-flex-order: 2;
+            -webkit-order: 2;
+            order: 2;
+        }
+
+        :host [scroller] {
+            overflow-y: auto;
+        }
+    </style>
+
+    <template>
+        <template is="xp-slave-state" master="{{group}}" master-tag="mat-panel-group"></template>
+        <mat-paper id="matPanelWrapper" background="[[background]]" z="[[_computeZ(raised)]]">
+            <div id="matPanelBody">
+                <xp-collapse id="matPanelScroller" animatable="{{animatable}}" backward collapsed="{{collapsed}}" easing="cubic-bezier(0.55, 0, 0.01, 1)" on-scroll="_handleScroll">
+                    <content id="bodyContent" select=':not([header=""])'></content>
+                </xp-collapse>
+            </div>
+            <div id="matPanelHeader">
+                <content id="headerContent" select='[header=""]'></content>
+            </div>
+        </mat-paper>
+    </template>
+
+    <script>
+        Polymer({
+
+            // ELEMENT
+            is: 'mat-panel',
+
+            /*********************************************************************/
+
+            /**
+             * Collapses the panel.
+             *
+             * @method collapse
+             * @returns {Element}
+             */
+            collapse: function () {
+                var self = this;
+                self.$.matPanelScroller.collapse();
+                return self;
+            },
+
+            /**
+             * Expands the panel.
+             *
+             * @method expand
+             * @returns {Element}
+             */
+            expand: function () {
+                var self = this;
+                self.$.matPanelScroller.expand();
+                return self;
+            },
+
+            /**
+             * Toggles the collapsed state.
+             *
+             * @method toggle
+             * @returns {Element}
+             */
+            toggle: function () {
+                var self = this;
+                self.$.matPanelScroller.toggle();
+                return self;
+            },
+
+            /*********************************************************************/
+
+            /**
+             * Refreshes the element.
+             *
+             * @method _refresh
+             * @returns {Element}
+             * @private
+             */
+            _refresh: function () {
+
+                // Vars
+                var self = this;
+
+                // Checking
+                if (!self.isAttached || !self.group) { return self; }
+
+                // Collapsing
+                if (!self.collapsed && !self.group.autoCollapseDisabled) { XP.invoke(XP.findSiblingElements(self, 'mat-panel'), 'collapse'); }
+
+                return self;
+            },
+
+            /*********************************************************************/
+
+            // LISTENERS
+            listeners: {
+                'xp-slave-state': '_handleSlave'
+            },
+
+            // OBSERVERS
+            observers: [
+                '_refresh(collapsed, group)'
+            ],
+
+            // PROPERTIES
+            properties: {
+
+                /**
+                 * If set to true, the animation can be executed.
+                 *
+                 * @attribute animatable
+                 * @type boolean
+                 * @default false
+                 * @notifies
+                 */
+                animatable: {
+                    notify: true,
+                    type: Boolean,
+                    value: false
+                },
+
+                /**
+                 * The paper's background color.
+                 *
+                 * @attribute background
+                 * @type string
+                 */
+                background: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * If set to true, the panel is collapsed.
+                 *
+                 * @attribute collapsed
+                 * @type boolean
+                 * @default false
+                 * @notifies
+                 */
+                collapsed: {
+                    notify: true,
+                    reflectToAttribute: true,
+                    type: Boolean,
+                    value: false
+                },
+
+                /**
+                 * The master group.
+                 *
+                 * @attribute group
+                 * @type Element
+                 * @notifies
+                 * @readonly
+                 */
+                group: {
+                    notify: true,
+                    value: null
+                },
+
+                /**
+                 * If set to true, the panel is raised.
+                 *
+                 * @attribute raised
+                 * @type boolean
+                 * @default false
+                 */
+                raised: {
+                    reflectToAttribute: true,
+                    type: Boolean,
+                    value: false
+                },
+
+                /**
+                 * The panel's scroll amount.
+                 *
+                 * @attribute scrolled
+                 * @type number
+                 * @default 0
+                 * @notifies
+                 * @readonly
+                 */
+                scrolled: {
+                    notify: true,
+                    readOnly: true,
+                    type: Number,
+                    value: 0
+                },
+
+                /**
+                 * The panel's scrolling element.
+                 *
+                 * @attribute scroller
+                 * @type Element
+                 * @notifies
+                 * @readonly
+                 */
+                scroller: {
+                    notify: true,
+                    observer: '_scrollerChanged',
+                    readOnly: true,
+                    value: null
+                }
+            },
+
+            /*********************************************************************/
+
+            // COMPUTER
+            _computeZ: function (raised) {
+                return raised ? 2 : 0;
+            },
+
+            /*********************************************************************/
+
+            // OBSERVER
+            _scrollerChanged: function (post, pre) {
+
+                // Checking
+                if (arguments.length < 2) { return; }
+
+                // Listening
+                if (pre) { XP.removeAttribute(pre, 'scroller'); }
+                if (post) { XP.addAttribute(post, 'scroller'); }
+            },
+
+            /*********************************************************************/
+
+            // LISTENER
+            ready: function() {
+                this._setScroller(this.$.matPanelScroller);
+            },
+
+            /*********************************************************************/
+
+            // HANDLER
+            _handleScroll: function () {
+                this._setScrolled(this.scroller.scrollTop);
+            },
+
+            // HANDLER
+            _handleSlave: function (event) {
+                if (event.detail.firer !== this && event.detail.masterTag === 'mat-panel-group' && XP.matches(event.detail.firer, 'mat-panel')) { event.stopPropagation(); }
+            }
+        });
+    </script>
+
+</dom-module>

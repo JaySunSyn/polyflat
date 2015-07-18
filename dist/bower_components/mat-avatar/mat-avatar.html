@@ -1,0 +1,294 @@
+<!--
+@license
+Copyright (c) 2015 The ExpandJS authors. All rights reserved.
+This code may only be used under the BSD style license found at https://expandjs.github.io/LICENSE.txt
+The complete set of authors may be found at https://expandjs.github.io/AUTHORS.txt
+The complete set of contributors may be found at https://expandjs.github.io/CONTRIBUTORS.txt
+-->
+
+<!--
+This element is used to display a material avatar.
+
+@element mat-avatar
+@description A custom element used to display a Material Design avatar image
+@keywords material design, material avatar, web app, html5, expandjs, web-components
+@group contents
+@homepage http://expandjs.com/elements/mat-avatar
+@demo http://expandjs.com/demo/mat-avatar
+
+@behavior xp-anchor-behavior http://expandjs.com/elements/xp-anchor-behavior
+@behavior xp-pressed-behavior http://expandjs.com/elements/xp-pressed-behavior
+@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
+
+@dependency polymer Polymer/polymer#^1.0.0
+@dependency expandjs ExpandJS/expandjs#0.9.4
+@dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
+@dependency mat-icon ExpandJS/mat-icon#0.9.4
+@dependency mat-paper ExpandJS/mat-paper#0.9.4
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.4
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.4
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.4
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
+
+@devDependency mat-demo ExpandJS/mat-demo#0.9.4
+@devDependency mat-icons ExpandJS/mat-icons#0.9.4
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../mat-icon/mat-icon.html">
+<link rel="import" href="../mat-paper/mat-paper.html">
+<link rel="import" href="../mat-ripple/mat-ripple.html">
+<link rel="import" href="../xp-anchor-behavior/xp-anchor-behavior.html">
+<link rel="import" href="../xp-pressed-behavior/xp-pressed-behavior.html">
+<link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
+
+<dom-module id="mat-avatar">
+
+    <link rel="import" type="css" href="../xp-pressed-behavior/xp-pressed-behavior.css">
+
+    <style>
+        :host {
+            border-radius: 50%;
+            height: 40px;
+            margin: 4px;
+            width: 40px;
+        }
+
+        :host([big]) {
+            height: 64px;
+            margin: 0;
+            width: 64px;
+        }
+
+        :host([empty]) {
+            display: none !important;
+        }
+
+        :host #matAvatarWrapper,
+        :host #matAvatarMain {
+            border-radius: inherit;
+            height: 100%;
+            overflow: visible;
+        }
+
+        :host #matAvatarMain {
+            @apply(--layout-horizontal);
+            @apply(--layout-center-center);
+        }
+
+        :host([raster]) #matAvatarWrapper {
+            background: transparent !important;
+        }
+
+        :host #matAvatarAnchor {
+            border-radius: inherit;
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        :host(:not([big])) #matAvatarAnchor:after {
+            bottom: -4px;
+            content: "";
+            left: -4px;
+            position: absolute;
+            right: -4px;
+            top: -4px;
+        }
+
+        :host #matAvatarIcon {
+            display: block;
+            position: relative;
+        }
+
+        :host([raster]) #matAvatarIcon {
+            border-radius: inherit;
+            height: 100%;
+            width: 100%;
+        }
+
+        :host([raster]) #matAvatarIcon::shadow #matIconAdaptee [icon] {
+            box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.12) inset;
+        }
+    </style>
+
+    <template>
+        <mat-paper id="matAvatarWrapper" background="[[_computeCurrentBackground(active, activeBackground, background)]]" brightness="placeholder" disabled="[[disabled]]" pressable>
+            <a id="matAvatarAnchor">
+                <div id="matAvatarMain">
+                    <mat-icon id="matAvatarIcon" color="[[_computeCurrentColor(active, activeColor, color)]]" disabled="[[disabled]]" empty="{{empty}}" name="[[icon]]" raster="{{raster}}" src="[[iconSrc]]"></mat-icon>
+                </div>
+            </a>
+            <mat-ripple context="[[self]]" id="matAvatarRipple" color="[[_computeCurrentColor(active, activeColor, color)]]" auto-center></mat-ripple>
+        </mat-paper>
+    </template>
+
+    <script>
+        Polymer({
+
+            // ELEMENT
+            is: 'mat-avatar',
+
+            // BEHAVIORS
+            behaviors: [
+                Polymer.XPAnchorBehavior,
+                Polymer.XPPressedBehavior,
+                Polymer.XPReferralBehavior
+            ],
+
+            /*********************************************************************/
+
+            // PROPERTIES
+            properties: {
+
+                /**
+                 * The paper's active background color.
+                 *
+                 * @attribute active-background
+                 * @type string
+                 */
+                activeBackground: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The ink's active color.
+                 *
+                 * @attribute active-color
+                 * @type string
+                 */
+                activeColor: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The paper's background color.
+                 *
+                 * @attribute background
+                 * @type string
+                 */
+                background: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * If set to true, the element has 64px diameter instead of 40px.
+                 *
+                 * @attribute big
+                 * @type boolean
+                 * @default false
+                 */
+                big: {
+                    reflectToAttribute: true,
+                    type: Boolean,
+                    value: false
+                },
+
+                /**
+                 * The ink's color.
+                 *
+                 * @attribute color
+                 * @type string
+                 */
+                color: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The element's data.
+                 *
+                 * @attribute data
+                 * @type *
+                 * @notifies
+                 */
+                data: {
+                    notify: true,
+                    value: null
+                },
+
+                /**
+                 * If set to true, the element is hidden.
+                 *
+                 * @attribute empty
+                 * @type boolean
+                 * @notifies
+                 * @readonly
+                 */
+                empty: {
+                    notify: true,
+                    reflectToAttribute: true,
+                    type: Boolean
+                },
+
+                /**
+                 * The button's icon.
+                 *
+                 * @attribute icon
+                 * @type string
+                 */
+                icon: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The button's icon's src.
+                 *
+                 * @attribute icon-src
+                 * @type string
+                 */
+                iconSrc: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * If set to true, the icon is a raster one instead of svg.
+                 *
+                 * @attribute raster
+                 * @type boolean
+                 * @default false
+                 * @notifies
+                 */
+                raster: {
+                    notify: true,
+                    reflectToAttribute: true,
+                    type: Boolean
+                }
+            },
+
+            /*********************************************************************/
+
+            // COMPUTER
+            _computeCurrentBackground: function (active, activeBackground, background) {
+                return (active && activeBackground) || background;
+            },
+
+            // COMPUTER
+            _computeCurrentColor: function (active, activeColor, color) {
+                return (active && activeColor) || color;
+            },
+
+            /*********************************************************************/
+
+            // LISTENER
+            ready: function () {
+                this._setAnchor(this.$.matAvatarAnchor);
+            }
+        });
+    </script>
+
+</dom-module>
