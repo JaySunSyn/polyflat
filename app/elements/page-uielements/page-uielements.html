@@ -9,6 +9,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
+<link rel="import" href="../../bower_components/iron-icon-button/iron-icon-button.html">
+
+<link rel="import" href="../../bower_components/gold-cc-cvc-input/gold-cc-cvc-input.html">
+<link rel="import" href="../../bower_components/gold-cc-expiration-input/gold-cc-expiration-input.html">
+<link rel="import" href="../../bower_components/gold-cc-input/gold-cc-input.html">
+<link rel="import" href="../../bower_components/gold-zip-input/gold-zip-input.html">
+<link rel="import" href="../../bower_components/gold-email-input/gold-email-input.html">
+<link rel="import" href="../../bower_components/gold-phone-input/gold-phone-input.html">
+
+<link rel="import" href="../../bower_components/google-hangout-button/google-hangout-button.html">
 
 <dom-module id="page-uielements">
   <style>
@@ -16,9 +35,80 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       display: block;
     }
 
+    #my-button::shadow paper-ripple {
+      color: blue;
+      background: green;
+      color: yellow;
+    }
+
+    google-hangout-button, span.google-hangout-button {
+      display: inline-block;
+    }
+
+    .uiBlock{
+      float: left;
+      display: inline;
+      margin-bottom: 24px;
+      margin-right: 6px;
+      padding: 20px 20px;
+      background: #FFF;
+      border-radius: 3px;
+      position: relative;
+      -webkit-border-radius: 3px;
+      border-left: 1px solid #efefef;
+      border-right: 1px solid #efefef;
+      border-bottom: 1px solid #e2e2e2;
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04);
+      transition: padding 500ms;
+      -moz-transition: padding 500ms;
+      -webkit-transition: padding 500ms;
+    }
+
   </style>
   <template>
-    <div>Hello from <span>{{foo}}</span></div>
+
+    <div class="uiBlock">
+      <p><strong>Normal Buttons</strong></p>
+      <paper-button raised id="my-button">raised button</paper-button>
+      <paper-button>flat button</paper-button>
+      <paper-button noink>No ripple effect</paper-button>
+      <paper-button toggles>toggle-able button</paper-button>
+    </div>
+
+    <div class="uiBlock">
+      <p><strong>Icon Buttons</strong></p>
+      <paper-icon-button icon="menu"></paper-icon-button>
+      <paper-icon-button icon="favorite" style="color: red;"></paper-icon-button>
+    </div>
+
+    <div class="uiBlock"><p><strong>eCommerce Inputs</strong></p>
+      <gold-cc-cvc-input label="Card Verification Value"></gold-cc-cvc-input>
+      <gold-cc-expiration-input label="Date"></gold-cc-expiration-input>
+      <gold-cc-input label="CC"></gold-cc-input>
+      <gold-zip-input label="Mailing zip code"></gold-zip-input>
+
+      <gold-email-input label="your email address"></gold-email-input>
+      <gold-phone-input label="call this"></gold-phone-input>
+    </div>
+
+    <div class="uiBlock">
+      <p><strong>Radio and Toggle Buttons</strong></p>
+      <paper-radio-button>Item label</paper-radio-button>
+      <p><paper-toggle-button></paper-toggle-button></p>
+      <paper-checkbox checked> Checkbox</paper-checkbox>
+    </div>
+
+    <div class="uiBlock"><p><strong>Other Buttons</strong></p>
+      <google-hangout-button></google-hangout-button>
+    </div>
+
+    <div class="uiBlock"><p><strong>Slider and Progress</strong></p>
+      <paper-spinner alt="Loading contacts list" active></paper-spinner>
+      <paper-slider min="10" max="200" value="110"></paper-slider>
+      <paper-progress value="10" secondary-progress="30"></paper-progress>
+    </div>
+
+
 
 
 

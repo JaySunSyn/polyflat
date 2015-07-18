@@ -23,6 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // have resolved and content has been stamped to the page
   app.addEventListener('dom-change', function() {
     console.log('Our app is ready to rock!');
+
   });
 
   // See https://github.com/Polymer/polymer/issues/1381
@@ -30,12 +31,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // imports are loaded and elements have been registered
   });
 
+
   // Close drawer after menu item is selected if drawerPanel is narrow
   app.onMenuSelect = function() {
     var drawerPanel = document.querySelector('#paperDrawerPanel');
     if (drawerPanel.narrow) {
       drawerPanel.closeDrawer();
     }
+  };
+
+  app.onShowSubMenu = function() {
+    var submenu = document.querySelector('#subMenuButton');
+    console.log(submenu.show());
+    
   };
 
 })(document);

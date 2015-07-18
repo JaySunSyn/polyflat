@@ -60,7 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Here's a histogram:</p>
       <google-chart id='chart4'
         type='histogram'
-        options='{'title': 'Days in a month', 'legend': 'none', 'histogram': { 'bucketSize': 1 }}'>
+        >
       </google-chart>
     </div>
 
@@ -145,7 +145,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Here's a line chart:</p>
       <google-chart id='chart5'
         type='line'
-        options='{'title': 'Days in a month'}'>   
+        >   
       </google-chart>
     </div>
 
@@ -153,7 +153,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Here's a pie chart:</p>
       <google-chart id='chart6'
         type='pie'
-        options='{'title': 'Distribution of days in 2001H1'}'>
+        >
       </google-chart>
     </div>
 
@@ -161,7 +161,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Here's a scatter chart:</p>
       <google-chart id='chart7'
         type='scatter'
-        options='{'legend': 'none'}'>
+        >
       </google-chart>
     </div>
 
@@ -169,7 +169,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Here's a stepped area chart:</p>
       <google-chart id='chart8'
         type='stepped-area'
-        options='{'title': 'Days in a month'}'>
+        >
       </google-chart>
     </div>
 
@@ -316,12 +316,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         this.$.chart4.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
         this.$.chart4.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
+        this.$.chart4.options={'title': 'Days in a month', 'legend': 'none', 'histogram': { 'bucketSize': 1 }};
 
         this.$.chart5.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
         this.$.chart5.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
+        this.$.chart5.options={'title': 'Days in a month'};
 
         this.$.chart6.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
         this.$.chart6.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
+        this.$.chart6.options={'title': 'Distribution of days in 2001H1'};
 
         this.$.chart7.data=[['A', 'B'],
            [20, 45],
@@ -329,9 +332,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
            [50, 80],
            [77, 50],
            [68, 15]];
+        this.$.chart7.options={'legend': 'none'};
 
         this.$.chart8.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
         this.$.chart8.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
+        this.$.chart8.options={'title': 'Days in a month'};
 
 
       }
