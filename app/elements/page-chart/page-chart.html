@@ -8,12 +8,12 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/google-chart/google-chart.html">
-<link rel="import" href="../../bower_components/charts-component/v-chart.html">
-<link rel="import" href="../../bower_components/charts-component/v-series.html">
+<link rel='import' href='../../bower_components/polymer/polymer.html'>
+<link rel='import' href='../../bower_components/google-chart/google-chart.html'>
+<link rel='import' href='../../bower_components/charts-component/v-chart.html'>
+<link rel='import' href='../../bower_components/charts-component/v-series.html'>
 
-<dom-module id="page-chart">
+<dom-module id='page-chart'>
   <style>
     code {
       color: #007000;
@@ -46,58 +46,58 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <h3>Charts</h3>
 
-    <div class="chartBlock" style="width:580px;height:400px;">
+    <div class='chartBlock' style='width:580px;height:400px;'>
       <p>Here's a geo chart:</p>
-      <google-chart id="chart3" type='geo'></google-chart>
+      <google-chart id='chart3' type='geo'></google-chart>
     </div>
 
-    <div class="chartBlock">
+    <div class='chartBlock'>
       <p>Here's a pie chart:</p>
-      <google-chart id="chart2" type='pie'></google-chart>
+      <google-chart id='chart2' type='pie'></google-chart>
     </div>
     
-    <div class="chartBlock">
+    <div class='chartBlock'>
       <p>Here's a histogram:</p>
-      <google-chart id="chart4"
+      <google-chart id='chart4'
         type='histogram'
-        options='{"title": "Days in a month", "legend": "none", "histogram": { "bucketSize": 1 }}'>
+        options='{'title': 'Days in a month', 'legend': 'none', 'histogram': { 'bucketSize': 1 }}'>
       </google-chart>
     </div>
 
-    <div class="chartBlock">
-      <v-chart id="demo-piechart" type="pie">
-          <title style="color: #333;">Browser market shares</title>
-          <tooltip point-format="{series.name}: <b>{point.percentage:.1f}%</b>">
+    <div class='chartBlock'>
+      <v-chart id='demo-piechart' type='pie'>
+          <title style='color: #333;'>Browser market shares</title>
+          <tooltip point-format='{series.name}: <b>{point.percentage:.1f}%</b>'>
           </tooltip>
           <plot-options>
-              <pie allow-point-select="true" cursor="pointer">
-                  <data-labels enabled="true" format="<b>{point.name}</b>:    {point.percentage:.1f} %">
+              <pie allow-point-select='true' cursor='pointer'>
+                  <data-labels enabled='true' format='<b>{point.name}</b>:    {point.percentage:.1f} %'>
                   </data-labels>
               </pie>
           </plot-options>
 
-          <v-series name="Browser share">
+          <v-series name='Browser share'>
               <data>
-                  ["Firefox",   45.0],
-                  ["IE",       26.8],
-                  ["Chrome", 12.8],
-                  ["Safari",    8.5],
-                  ["Opera",     6.2],
-                  ["Others",   0.7]
+                  ['Firefox',   45.0],
+                  ['IE',       26.8],
+                  ['Chrome', 12.8],
+                  ['Safari',    8.5],
+                  ['Opera',     6.2],
+                  ['Others',   0.7]
               </data>
           </v-series>
       </v-chart>
     </div>
     
-    <div class="chartBlock">
+    <div class='chartBlock'>
       <p>A simple <code>google-chart</code> looks like this:</p>
-      <google-chart id="chart"></google-chart>
+      <google-chart id='chart'></google-chart>
     </div>
 
-    <div class="chartBlock">
-      <v-chart id="demo-treemap-coloraxis" type="treemap">
-          <title style="color: #333;">Here's a Treemap</title>
-          <color-axis min-color="#FFFFFF" max-color="#7BB5EF"></color-axis>
+    <div class='chartBlock'>
+      <v-chart id='demo-treemap-coloraxis' type='treemap'>
+          <title style='color: #333;'>Here's a Treemap</title>
+          <color-axis min-color='#FFFFFF' max-color='#7BB5EF'></color-axis>
           <v-series>
               <layout-algorithm>squarified</layout-algorithm>
               <data>
@@ -141,48 +141,48 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </v-chart>
     </div>
 
-    <div class="chartBlock">
+    <div class='chartBlock'>
       <p>Here's a line chart:</p>
-      <google-chart id="chart5"
+      <google-chart id='chart5'
         type='line'
-        options='{"title": "Days in a month"}'>   
+        options='{'title': 'Days in a month'}'>   
       </google-chart>
     </div>
 
-    <div class="chartBlock">
+    <div class='chartBlock'>
       <p>Here's a pie chart:</p>
-      <google-chart id="chart6"
+      <google-chart id='chart6'
         type='pie'
-        options='{"title": "Distribution of days in 2001H1"}'>
+        options='{'title': 'Distribution of days in 2001H1'}'>
       </google-chart>
     </div>
 
-    <div class="chartBlock">
+    <div class='chartBlock'>
       <p>Here's a scatter chart:</p>
-      <google-chart id="chart7"
+      <google-chart id='chart7'
         type='scatter'
-        options='{"legend": "none"}'>
+        options='{'legend': 'none'}'>
       </google-chart>
     </div>
 
-    <div class="chartBlock">
+    <div class='chartBlock'>
       <p>Here's a stepped area chart:</p>
-      <google-chart id="chart8"
+      <google-chart id='chart8'
         type='stepped-area'
-        options='{"title": "Days in a month"}'>
+        options='{'title': 'Days in a month'}'>
       </google-chart>
     </div>
 
-    <div class="chartBlock">
-      <v-chart id="demo-column-drilldown" type="column">
-          <title style="color:#333;">Browser market shares at a specific website, March 2015</title>
+    <div class='chartBlock'>
+      <v-chart id='demo-column-drilldown' type='column'>
+          <title style='color:#333;'>Browser market shares at a specific website, March 2015</title>
           <subtitle>Source: statcounter.com</subtitle>
-          <x-axis type="category"></x-axis>
+          <x-axis type='category'></x-axis>
           <y-axis><title>Total percent market share</title></y-axis>
-          <legend enabled="false"></legend>
+          <legend enabled='false'></legend>
           <plot-options>
               <series>
-                  <data-labels enabled="true" format="{point.y:.1f}%">
+                  <data-labels enabled='true' format='{point.y:.1f}%'>
                   </data-labels>
               </series>
           </plot-options>
@@ -221,68 +221,68 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   </point>
               </data>
           </v-series>
-          <v-series id="Microsoft Internet Explorer" drilldown="true">
+          <v-series id='Microsoft Internet Explorer' drilldown='true'>
               <name>Microsoft Internet Explorer</name>
               <data>
-                  [ "v11.0", 24.13 ],
-                  [ "v8.0", 17.2 ],
-                  [ "v9.0", 8.11 ],
-                  [ "v10.0", 5.33 ],
-                  [ "v6.0", 1.06 ],
-                  [ "v7.0", 0.5 ]
+                  [ 'v11.0', 24.13 ],
+                  [ 'v8.0', 17.2 ],
+                  [ 'v9.0', 8.11 ],
+                  [ 'v10.0', 5.33 ],
+                  [ 'v6.0', 1.06 ],
+                  [ 'v7.0', 0.5 ]
               </data>
           </v-series>
-          <v-series id="Chrome" drilldown="true">
+          <v-series id='Chrome' drilldown='true'>
               <name>Chrome</name>
               <data>
-                  [ "v40.0", 5 ],
-                  [ "v41.0", 4.32 ],
-                  [ "v42.0", 3.68 ],
-                  [ "v39.0", 2.96 ],
-                  [ "v36.0", 2.53 ],
-                  [ "v43.0", 1.45 ],
-                  [ "v31.0", 1.24 ],
-                  [ "v35.0", 0.85 ],
-                  [ "v38.0", 0.6 ],
-                  [ "v32.0", 0.55 ],
-                  [ "v37.0", 0.38 ],
-                  [ "v33.0", 0.19 ],
-                  [ "v34.0", 0.14 ],
-                  [ "v30.0", 0.14 ]
+                  [ 'v40.0', 5 ],
+                  [ 'v41.0', 4.32 ],
+                  [ 'v42.0', 3.68 ],
+                  [ 'v39.0', 2.96 ],
+                  [ 'v36.0', 2.53 ],
+                  [ 'v43.0', 1.45 ],
+                  [ 'v31.0', 1.24 ],
+                  [ 'v35.0', 0.85 ],
+                  [ 'v38.0', 0.6 ],
+                  [ 'v32.0', 0.55 ],
+                  [ 'v37.0', 0.38 ],
+                  [ 'v33.0', 0.19 ],
+                  [ 'v34.0', 0.14 ],
+                  [ 'v30.0', 0.14 ]
               </data>
           </v-series>
-          <v-series id="Firefox" drilldown="true">
+          <v-series id='Firefox' drilldown='true'>
               <name>Firefox</name>
               <data>
-                  [ "v35", 2.76 ],
-                  [ "v36", 2.32 ],
-                  [ "v37", 2.31 ],
-                  [ "v34", 1.27 ],
-                  [ "v38", 1.02 ],
-                  [ "v31", 0.33 ],
-                  [ "v33", 0.22 ],
-                  [ "v32", 0.15 ]
+                  [ 'v35', 2.76 ],
+                  [ 'v36', 2.32 ],
+                  [ 'v37', 2.31 ],
+                  [ 'v34', 1.27 ],
+                  [ 'v38', 1.02 ],
+                  [ 'v31', 0.33 ],
+                  [ 'v33', 0.22 ],
+                  [ 'v32', 0.15 ]
               </data>
           </v-series>
-          <v-series id="Safari" drilldown="true">
+          <v-series id='Safari' drilldown='true'>
               <name>Safari</name>
               <data>
-                  [ "v8.0", 2.56 ],
-                  [ "v7.1", 0.77 ],
-                  [ "v5.1", 0.42 ],
-                  [ "v5.0", 0.3 ],
-                  [ "v6.1", 0.29 ],
-                  [ "v7.0", 0.26 ],
-                  [ "v6.2", 0.17 ]
+                  [ 'v8.0', 2.56 ],
+                  [ 'v7.1', 0.77 ],
+                  [ 'v5.1', 0.42 ],
+                  [ 'v5.0', 0.3 ],
+                  [ 'v6.1', 0.29 ],
+                  [ 'v7.0', 0.26 ],
+                  [ 'v6.2', 0.17 ]
               </data>
           </v-series>
-          <v-series id="Opera" drilldown="true">
+          <v-series id='Opera' drilldown='true'>
               <name>Opera</name>
               <data>
-                  [ "v12.x", 0.34 ],
-                  [ "v28", 0.24 ],
-                  [ "v27", 0.17 ],
-                  [ "v29", 0.16 ]
+                  [ 'v12.x', 0.34 ],
+                  [ 'v28', 0.24 ],
+                  [ 'v27', 0.17 ],
+                  [ 'v29', 0.16 ]
               </data>
           </v-series>
       </v-chart>
@@ -300,38 +300,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       attached: function() {
 
-        this.$.chart.data= [["Categories", "Value"],["Category 1", 1.0],["Category 2", 1.1]];
+        this.$.chart.data= [['Categories', 'Value'],['Category 1', 1.0],['Category 2', 1.1]];
 
-        this.$.chart2.options={"title": "Distribution of days in 2001Q1"};
-        this.$.chart2.cols=[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}];
-        this.$.chart2.rows=[["Jan", 31],["Feb", 28],["Mar", 31]];
+        this.$.chart2.options={'title': 'Distribution of days in 2001Q1'};
+        this.$.chart2.cols=[{'label':'Month', 'type':'string'}, {'label':'Days', 'type':'number'}];
+        this.$.chart2.rows=[['Jan', 31],['Feb', 28],['Mar', 31]];
 
-        this.$.chart3.data=[["Country", "Popularity"],
-           ["Germany", 200],
-           ["United States", 300],
-           ["Brazil", 400],
-           ["Canada", 500],
-           ["France", 600],
-           ["RU", 700]];
+        this.$.chart3.data=[['Country', 'Popularity'],
+           ['Germany', 200],
+           ['United States', 300],
+           ['Brazil', 400],
+           ['Canada', 500],
+           ['France', 600],
+           ['RU', 700]];
 
-        this.$.chart4.cols=[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}];
-        this.$.chart4.rows=[["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30]];
+        this.$.chart4.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
+        this.$.chart4.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
 
-        this.$.chart5.cols=[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}];
-        this.$.chart5.rows=[["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30]];
+        this.$.chart5.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
+        this.$.chart5.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
 
-        this.$.chart6.cols=[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}];
-        this.$.chart6.rows=[["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30]];
+        this.$.chart6.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
+        this.$.chart6.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
 
-        this.$.chart7.data=[["A", "B"],
+        this.$.chart7.data=[['A', 'B'],
            [20, 45],
            [31, 66],
            [50, 80],
            [77, 50],
            [68, 15]];
 
-        this.$.chart8.cols=[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}];
-        this.$.chart8.rows=[["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30]];
+        this.$.chart8.cols=[{'label': 'Month', 'type': 'string'},{'label': 'Days', 'type': 'number'}];
+        this.$.chart8.rows=[['Jan', 31],['Feb', 28],['Mar', 31],['Apr', 30],['May', 31],['Jun', 30]];
 
 
       }
