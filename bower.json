@@ -20,7 +20,8 @@
     "google-map": "GoogleWebComponents/google-map#~1.0.3",
     "charts-component": "vaadin/charts-component#master",
     "google-hangout-button": "GoogleWebComponents/google-hangout-button#~1.0.1",
-    "gold-elements": "PolymerElements/gold-elements#~1.0.1"
+    "gold-elements": "PolymerElements/gold-elements#~1.0.1",
+    "flot": "~0.8.3"
   },
   "devDependencies": {
     "web-component-tester": "*",

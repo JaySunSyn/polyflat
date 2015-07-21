@@ -13,6 +13,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel='import' href='../../bower_components/charts-component/v-chart.html'>
 <link rel='import' href='../../bower_components/charts-component/v-series.html'>
 
+<link rel='import' href='../flot-charts/flot-charts.html'>
+
 <dom-module id='page-chart'>
   <style>
     code {
@@ -45,6 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
   <template>
     <h3>Charts</h3>
+      <flot-charts></flot-charts>
 
     <div class='chartBlock' style='width:580px;height:400px;'>
       <p>Here's a geo chart:</p>
@@ -288,8 +291,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </v-chart>
     </div>
 
-
-
   </template>
 </dom-module>
   <script>
@@ -298,7 +299,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       is: 'page-chart',
 
-      attached: function() {
+      attached:function(){
+        this.setGoogleCharts();
+      },
+
+      setGoogleCharts: function() {
 
         this.$.chart.data= [['Categories', 'Value'],['Category 1', 1.0],['Category 2', 1.1]];
 
