@@ -1,0 +1,96 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/sortable-list/sortable-list.html">
+
+<dom-module id="camera-element">
+  <style is="custom-style">
+    :host {
+      display: block;
+    }
+    sortable-list {
+      margin: 6px;
+    }
+    sortable-list > div {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 6px 12px;
+      margin-bottom: 3px;
+      margin-left: 48px !important;
+    }
+
+    #grouped-a div {
+      background: #dfd;
+    }
+
+    #grouped-b div {
+      background: #ddf;
+    }
+    .list-element{
+      margin-left: 50px !important;
+    }
+
+    p{
+      background-color: lightblue;
+      padding:6px;
+    }
+  </style>
+  <template>
+    <p>Garden</p>
+    <sortable-list id="grouped-a" group="grouped" animation="150" class="list">
+      <div>First</div>
+      <div>Second</div>
+      <div>Third</div>
+    </sortable-list>
+    <p>Hallway</p>
+    <sortable-list id="grouped-b" group="grouped" animation="150">
+      <div>Fourth</div>
+      <div>Fifth</div>
+      <div>Sixth</div>
+    </sortable-list>
+    <p>Roof</p>
+    <sortable-list id="grouped-c" group="grouped" animation="150">
+      <div>First</div>
+      <div>Second</div>
+      <div>Third</div>
+    </sortable-list>
+    <p>Toilettes</p>
+    <sortable-list id="grouped-d" group="grouped" animation="150">
+      <div>Fourth</div>
+      <div>Fifth</div>
+      <div>Sixth</div>
+    </sortable-list>
+
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'camera-element',
+
+    properties: {
+      foo: {
+        type: String,
+        value: 'bar',
+        notify: true
+      }
+    }
+  });
+})();
+</script>
+  <script>
+    ['sort-start', 'sort-end', 'sort-add', 'sort-update', 'sort-change', 'sort-remove', 'sort-filter'].forEach(function(ev) {
+      document.addEventListener(ev, function(e) {
+        console.log(ev, e.target.id, e.detail);
+      });
+    });
+  </script>

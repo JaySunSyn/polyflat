@@ -7,32 +7,77 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/rickshaw-charts/multi-chart.html">
+
+<link rel="import" href="../camera-element/camera-element.html">
 
 <dom-module id="page-dashboard">
   <style>
     :host {
       display: block;
     }
+
+    .cameraBox{
+      width: 30%;
+    }
+
+    .dashBlock{
+      display: inline;
+      float: left;
+      margin-bottom: 24px;
+      margin-right: 6px;
+      padding: 20px 20px;
+      background: #FFF;
+      border-radius: 3px;
+      position: relative;
+      -webkit-border-radius: 3px;
+      border-left: 1px solid #efefef;
+      border-right: 1px solid #efefef;
+      border-bottom: 1px solid #e2e2e2;
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04);
+      transition: padding 500ms;
+      -moz-transition: padding 500ms;
+      -webkit-transition: padding 500ms;
+    }
+
+    .col_1{
+      display: inline;
+      float: left;
+      width: 30%;
+      margin: 24px;
+    }
+    .col_2{
+      display: inline;
+      float: left;
+      width: 40%;
+      margin: 24px;
+    }
+
   </style>
   <template>
-    <div>Hello!<br/>Already filled: 
-    <ul>
-      <li>Maps</li>
-      <li>Charts</li>
-      <li>UI Elements</li>
-    </ul>
-
-    <iframe src="http://stevewirts.github.io/fin-hypergrid-dnd-list/components/fin-hypergrid-dnd-list/demo.html" frameborder="0"
-    scrolling="no" height="500px" width="100%" seamless></iframe>
+    <div>Dashboard</div>
+    <div class="col_1">
+      <camera-element></camera-element>
     </div>
+    <div class="col_2">
+      <p>hii</p>
+      <multi-chart series="{{series}}"></multi-chart>
+    </div>
+    
   </template>
 </dom-module>
+
+
+
 <script>
 (function() {
   Polymer({
     is: 'page-dashboard',
+
+    ready:function(){
+      this.setMultiSeries();
+    },
 
     properties: {
       foo: {
@@ -40,7 +85,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         value: 'bar',
         notify: true
       }
+    },
+
+    setMultiSeries:function(){
+      var seriesData = [ [], [], [], [], [] ];
+      var random = new Rickshaw.Fixtures.RandomData(50);
+
+      for (var i = 0; i < 75; i++) {
+        random.addData(seriesData);
+      }
+
+      var series = [
+                      {
+                        name: 'temperature',
+                        data: seriesData.shift(),
+                        color: 'rgba(255, 0, 0, 0.4)',
+                        renderer: 'stack'
+                      }, {
+                        name: 'heat index',
+                        data: seriesData.shift(),
+                        color: 'rgba(255, 127, 0, 0.4)',
+                        renderer: 'stack'
+                      }, {
+                        name: 'dewpoint',
+                        data: seriesData.shift(),
+                        color: 'rgba(127, 0, 0, 0.3)',
+                        renderer: 'scatterplot'
+                      }, {
+                        name: 'pop',
+                        data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y / 4 } }),
+                        color: 'rgba(0, 0, 127, 0.4)',
+                        renderer: 'bar'
+                      }, {
+                        name: 'humidity',
+                        data: seriesData.shift().map(function(d) { return { x: d.x, y: d.y * 1.5 } }),
+                        renderer: 'line',
+                        color: 'rgba(0, 0, 127, 0.25)'
+                      }
+                    ];
+      this.series = series;
     }
+
+
   });
 })();
+
+
+    
+
 </script>

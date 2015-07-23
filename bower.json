@@ -21,7 +21,11 @@
     "charts-component": "vaadin/charts-component#master",
     "google-hangout-button": "GoogleWebComponents/google-hangout-button#~1.0.1",
     "gold-elements": "PolymerElements/gold-elements#~1.0.1",
-    "flot": "~0.8.3"
+    "flot-charts": "*",
+    "Nestable": "JaySunSyn/Nestable",
+    "jquery": "~2.1.4",
+    "rickshaw-charts": "*",
+    "sortable-list": "~0.2.0"
   },
   "devDependencies": {
     "web-component-tester": "*",

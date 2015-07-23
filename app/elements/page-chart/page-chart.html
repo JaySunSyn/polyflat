@@ -8,12 +8,15 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
+<script language="javascript" type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+
 <link rel='import' href='../../bower_components/polymer/polymer.html'>
 <link rel='import' href='../../bower_components/google-chart/google-chart.html'>
 <link rel='import' href='../../bower_components/charts-component/v-chart.html'>
 <link rel='import' href='../../bower_components/charts-component/v-series.html'>
 
-<link rel='import' href='../flot-charts/flot-charts.html'>
+<link rel='import' href='../../bower_components/flot-charts/flot-charts.html'>
+<link rel='import' href='../../bower_components/d3-charts/d3-charts.html'>
 
 <dom-module id='page-chart'>
   <style>
@@ -44,10 +47,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       color: #333;
     }
 
+    .flotChart{
+      height: 300px;
+      width: 100%;
+    }
+
+    .big{
+      height: 1300px;
+    }
+
   </style>
   <template>
     <h3>Charts</h3>
+
+    <div class='chartBlock'>
+      <p>Here are D3 charts:</p>
+      <d3-charts></d3-charts>
+    </div>
+
+    <div class='chartBlock big' style='width:48%;'>
+      <p>Here are Flot charts:</p>
       <flot-charts></flot-charts>
+    </div>
 
     <div class='chartBlock' style='width:580px;height:400px;'>
       <p>Here's a geo chart:</p>
