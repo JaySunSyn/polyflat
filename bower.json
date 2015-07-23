@@ -1,6 +1,24 @@
 {
-  "name": "polymer-starter-kit",
-  "private": true,
+  "name": "polyflat",
+  "version": "1.0.0",
+  "authors": [
+    "Jalal Fathi <jfathi.mail@gmail.com>"
+  ],
+  "description": "An element providing a solution to no problem in particular.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "Flat Dream"
+  ],
+  "main": "index.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/JaySunSyn/polyflat/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
   "dependencies": {
     "iron-elements": "PolymerElements/iron-elements#1.0.0",
     "paper-elements": "PolymerElements/paper-elements#~1.0.1",
@@ -22,7 +40,6 @@
     "google-hangout-button": "GoogleWebComponents/google-hangout-button#~1.0.1",
     "gold-elements": "PolymerElements/gold-elements#~1.0.1",
     "flot-charts": "*",
-    "Nestable": "JaySunSyn/Nestable",
     "jquery": "~2.1.4",
     "rickshaw-charts": "*",
     "sortable-list": "~0.2.0"
