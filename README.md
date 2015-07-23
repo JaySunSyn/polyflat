@@ -12,7 +12,7 @@ install this template
 
 ## Recommended Environment
 
-### Install Yeoman (yeoman.io)
+### Install [Yeoman](yeoman.io) 
 `npm install -g yo`
 
 #### Install generator-polymer
