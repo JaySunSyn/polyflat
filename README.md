@@ -20,5 +20,5 @@ Install the generator
 `npm install -g generator-polymer`
 
 #### Run Polyflat template
-cd into your project folder
+cd into your project folder and 
 `gulp serve`
